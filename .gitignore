@@ -1,0 +1,20 @@
+# Python virtual environment
+.venv/
+venv/
+
+# Python caches
+__pycache__/
+*.pyc
+
+# Temporary files
+uploads/
+static/results/
+static/intermediate/
+*.npy
+*.json
+
+# VS Code settings
+.vscode/
+
+# IDE files
+.idea/

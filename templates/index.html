@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neural Style Transfer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Neural Style Transfer</h1>
+
+        <div class="panel" id="upload_panel">
+            <h2>1. Upload Images</h2>
+            <div class="image-upload-area">
+                <div class="upload-box">
+                    <label for="content_image">Content Image:</label>
+                    <input type="file" id="content_image" name="content_image" accept="image/png, image/jpeg, image/jpg" required>
+                    <img id="content_preview" class="image-preview" src="#" alt="Content Preview" />
+                </div>
+                <div class="upload-box">
+                    <label for="style_image">Style Image:</label>
+                    <input type="file" id="style_image" name="style_image" accept="image/png, image/jpeg, image/jpg" required>
+                    <img id="style_preview" class="image-preview" src="#" alt="Style Preview" />
+                </div>
+            </div>
+            <div class="suggestion-section">
+                <button id="suggest_styles_button" type="button">Suggest Styles</button>
+                <div id="suggested_styles_container">
+                    <!-- Suggested style thumbnails will be added here -->
+                </div>
+            </div>
+        </div>
+
+        <div class="panel" id="parameters_panel">
+            <h2>2. Parameters</h2>
+            <div class="param-grid">
+                <div>
+                    <label for="output_size">Output Image Size:</label>
+                    <select id="output_size" name="output_size">
+                        <option value="256">256px (square/shorter)</option>
+                        <option value="384">384px (square/shorter)</option>
+                        <option value="512" selected>512px (square/shorter)</option>
+                        <option value="768">768px (square/shorter)</option>
+                        <option value="1024">1024px (square/shorter)</option>
+                        <option value="512x384">512px (H) x 384px (W)</option>
+                        <option value="384x512">384px (H) x 512px (W)</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="num_epochs">Epochs:</label>
+                    <input type="number" id="num_epochs" name="num_epochs" value="1000" min="100" step="100">
+                </div>
+                <div>
+                    <label for="learning_rate">Learning Rate:</label>
+                    <input type="number" id="learning_rate" name="learning_rate" value="0.002" step="0.0001" min="0.0001" max="0.1">
+                </div>
+                <div>
+                    <label for="alpha">Content Weight (Alpha):</label>
+                    <input type="number" id="alpha" name="alpha" value="1" step="0.1" min="0">
+                </div>
+                <div>
+                    <label for="beta">Style Weight (Beta):</label>
+                    <input type="number" id="beta" name="beta" value="100000" step="10000" min="0">
+                </div>
+            </div>
+        </div>
+
+        <div class="panel" id="action_panel">
+            <button id="stylize_button">Stylize Image!</button>
+        </div>
+
+        <div id="status_messages">
+            <p id="processing_message" class="status-message" style="display:none;">Processing... please wait. This might take several minutes.</p>
+            <p id="error_message" class="status-message error" style="display:none;"></p>
+        </div>
+
+        <div class="panel" id="results_area" style="display:none;">
+            <h2>Result</h2>
+            <img id="result_image" src="#" alt="Stylized Image">
+            <a id="download_link" href="#" download="stylized_image.png" style="display:none;">Download Result</a>
+        </div>
+
+        <div class="panel" id="intermediate_results_area" style="display:none;">
+            <h2>Intermediate Steps</h2>
+            <div id="intermediate_images_container">
+                <!-- Intermediate images will be populated here -->
+            </div>
+        </div>
+    </div> <!-- end .container -->
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
