@@ -17,8 +17,8 @@ This project is a web application that implements Neural Style Transfer, allowin
 
 **Installation Steps:**
 1. Clone the repository:
--  git clone https://github.com/YourUsername/your-repository-name.git
--  cd your-repository-name
+-  git clone https://github.com/sinchanarv/neural-style-transfer-Webapp.git
+-  cd "C:\Users\Sinchana\4sem el"
 
 2. Create and activate a Python virtual environment:
 - python -m venv venv
